@@ -1,4 +1,4 @@
-#!/Users/hemangi_karchalkar/Desktop/starlette_lms/env/bin/python
+#!/Users/makarand/workspace/personal/pycon23/Starlette_LMS/env/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
