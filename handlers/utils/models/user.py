@@ -1,10 +1,9 @@
 import enum
 
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Enum, Text
+from sqlalchemy import Enum, Text, Column, String, Boolean, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 
 from db.db_setup import Base
-
 
 
 class Role(Base):
@@ -13,8 +12,7 @@ class Role(Base):
     name = Column(String(100), unique=True, index=True, nullable=False)
 
     def as_json(self):
-         return { "id" : self.id,
-                 "name": self.name}
+        return {"id": self.id, "name": self.name}
 
 
 class User(Base):
@@ -26,19 +24,13 @@ class User(Base):
     last_name = Column(String(50), nullable=False)
     bio = Column(Text, nullable=True)
 
-    
-
-
     def as_json(self):
-            return { "id" : self.id,
-                    "email" : self.email ,
-                  
-                    "first_name": self.first_name,
-                    "last_name": self.last_name
-               
-                }
-
-
+        return {
+            "id": self.id,
+            "email": self.email,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+        }
 
 
 class UserRoleMapper(Base):
@@ -49,13 +41,9 @@ class UserRoleMapper(Base):
     role = Column(String, ForeignKey("roles.id"), nullable=False)
 
     def as_json(self):
-            return { "id" : self.id,
-                    "user" : self.user,
-                    "user_name": self.user,
-                  
-                    
-                    "role": self.role
-               
-                }
-    
-     
+        return {
+            "id": self.id,
+            "user": self.user,
+            "user_name": self.user,
+            "role": self.role,
+        }
